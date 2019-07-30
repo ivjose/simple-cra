@@ -19,19 +19,10 @@ export const FormItem = ({
   <Field name={name}>
     {({ form: { errors = {}, touched = {} } }) => {
       const error = get(errors, name, undefined);
-      const isTouched = get(touched, name, undefined);
-      const hasError = error !== false && isTouched;
+      const isTouched = get(touched, name, false);
+      const hasError = error !== undefined && isTouched;
       const isValid = !error && isTouched;
-      console.log('test Value', isTouched, hasError, isValid, error, errors);
 
-      console.log(
-        'test Error',
-        hasError
-          ? 'error'
-          : isValid && showValidateSuccess
-          ? 'success'
-          : undefined
-      );
       return (
         <Form.Item
           validateStatus={
