@@ -1,18 +1,21 @@
 import React from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Loader from 'components/Loader';
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
+const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props => {
-        return auth.status ? (
-          <div>
+        return loggedIn ? (
+          <>
             <React.Suspense fallback={<Loader />}>
               <Component {...props} />
             </React.Suspense>
-          </div>
+          </>
         ) : (
           <Redirect
             to={{
@@ -26,4 +29,24 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => {
   );
 };
 
-export default withRouter(PrivateRoute);
+PrivateRoute.defaultProps = {
+  location: {
+    pathname: '',
+  },
+};
+
+PrivateRoute.propTypes = {
+  component: PropTypes.elementType.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
+};
+
+const mapStateToProps = ({ auth }) => {
+  return {
+    loggedIn: auth.loggedIn,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(PrivateRoute));

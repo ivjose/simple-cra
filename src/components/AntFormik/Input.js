@@ -27,7 +27,7 @@ Input.propTypes = fieldDefaultProps;
 
 Input.defaultProps = {
   required: false,
-  label: 'false',
+  label: '',
 };
 
 Input.Password = ({ name, required, label, ...restProps }) => (
@@ -50,7 +50,7 @@ Input.Password.propTypes = fieldDefaultProps;
 
 Input.Password.defaultProps = {
   required: false,
-  label: 'false',
+  label: '',
 };
 
 Input.TextArea = ({ name, required, label, ...restProps }) => (
@@ -73,5 +73,5 @@ Input.TextArea.propTypes = fieldDefaultProps;
 
 Input.TextArea.defaultProps = {
   required: false,
-  label: 'false',
+  label: '',
 };

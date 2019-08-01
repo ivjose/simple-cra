@@ -5,11 +5,12 @@ import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { actionLogin } from 'actions/authAction';
+
 import LoginForm from './components/LoginForm';
 import validation from './validation';
 import Styled from './styled';
 import CONSTANTS from './constants';
-import { login } from './actions';
 
 const { Header, Footer, Content } = Layout;
 
@@ -64,9 +65,9 @@ Login.propTypes = {
   userLogin: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  userLogin: (username, password) => dispatch(login(username, password)),
-});
+const mapDispatchToProps = {
+  userLogin: actionLogin,
+};
 
 export default connect(
   null,

@@ -15,7 +15,6 @@ export const fieldDefaultProps = {
   label: PropTypes.string,
 };
 
-
 export const formItemProps = {
   name: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,

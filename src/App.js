@@ -4,8 +4,8 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 
 // shared components
 import Loader from 'components/Loader';
-// import PrivateRoute from 'containers/Private/PrivateRoute';
-// import PublicRoute from 'containers/Public/PublicRoute';
+import PrivateRoute from 'containers/Private/PrivateRoute';
+import PublicRoute from 'containers/Public/PublicRoute';
 import { Page404 } from 'components/ErrorPages';
 import GlobalStyle from './GlobalStyle';
 import ErrorBoundary from './ErrorBoundary';
@@ -35,11 +35,11 @@ class App extends Component {
             <Switch>
               <Redirect exact from="/" to="/login" />
 
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/all-forms" component={AllForms} />
+              <PublicRoute exact path="/login" component={Login} />
+              <PrivateRoute exact path="/all-forms" component={AllForms} />
 
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/profile" component={Profile} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/profile" component={Profile} />
 
               <Route exact path="/404" component={Page404} />
               <Route component={Page404} />

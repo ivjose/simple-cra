@@ -46,6 +46,7 @@ export const FormItem = ({
 FormItem.propTypes = formItemProps;
 
 FormItem.defaultProps = {
+  label: '',
   hasFeedback: false,
   showValidateSuccess: false,
 };
