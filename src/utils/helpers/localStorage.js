@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
 export const localStorage = {
-  save: ({ value, name }) => {
+  save: (name, value) => {
+    console.log(name, value);
+
     window.localStorage.setItem(name, JSON.stringify(value));
   },
   get: name => {

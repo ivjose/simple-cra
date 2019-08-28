@@ -43,7 +43,7 @@ const CURDEdit = ({ match, history }) => {
             'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
         });
       }
-      delayTime(2000, () => history.push('/settings/crud'));
+      delayTime(2000, () => history.push('/crud'));
       actions.setSubmitting(false);
     } catch (error) {
       console.log(error, 'Error');

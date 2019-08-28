@@ -8,7 +8,6 @@ const signIn = ({ email, password }) => {
       email,
       password,
     },
-   
   });
 };
 

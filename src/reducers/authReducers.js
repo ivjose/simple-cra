@@ -1,7 +1,14 @@
 import { localStorage } from 'utils/helpers/localStorage';
 import CONSTANTS from 'utils/constants';
 
-const { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } = CONSTANTS.TYPES;
+const {
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+} = CONSTANTS.TYPES;
 
 const isLogin = !!localStorage.get('token');
 const defaultState = {
@@ -37,6 +44,18 @@ const loginReducers = {
         return {
           ...defaultState,
           loggedIn: false,
+        };
+      case AUTH_SUCCESS:
+        return {
+          token: action.payload.token,
+          loggedIn: true,
+          loader: false,
+        };
+      case AUTH_ERROR:
+        return {
+          loggedIn: false,
+          loader: false,
+          error: action.payload,
         };
       default:
         return state;

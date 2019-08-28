@@ -31,6 +31,7 @@ class Dashboard extends Component {
           Logout
         </button>
         <Link to="/login">Login</Link>
+        <Link to="/crud">Login</Link>
       </div>
     );
   }

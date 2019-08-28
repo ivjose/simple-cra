@@ -16,7 +16,7 @@ const Page404 = () => {
         Page not found
       </p>
       <p>Sorry, but the page you are looking for doesn&apos;t exist</p>
-      <Link to="dashboard">Go Back to Home Page</Link>
+      <Link to="/dashboard">Go Back to Home Page</Link>
     </div>
   );
 };
