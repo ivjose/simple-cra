@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -14,52 +14,40 @@ import CONSTANTS from './constants';
 
 const { Header, Footer, Content } = Layout;
 
-class Login extends Component {
-  state = {
-    title: 'Login page',
-  };
-
-  handleSubmit = (values, actions) => {
-    const { userLogin } = this.props;
-    setTimeout(() => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log(values, 'Handle submit');
-
-      userLogin(values.username, values.password);
+const Login = ({ userLogin }) => {
+  const handleSubmit = async (values, actions) => {
+    actions.setSubmitting(true);
+    try {
+      await userLogin(values.username, values.password);
       actions.setSubmitting(false);
-    }, 1000);
+    } catch (error) {
+      actions.setSubmitting(false);
+    }
   };
 
-  render() {
-    const { title } = this.state;
-
-    console.log(this.props);
-
-    return (
-      <Layout style={{ height: '100%' }}>
-        <Header>Header</Header>
-        <Content>
-          <Styled.Wrapper>
-            <h1> {CONSTANTS.TITLE} </h1>
-            <Link to="/dashboard">{title}</Link>
-
-            <Formik
-              initialValues={{
-                username: 'eve.holt@reqres.in',
-                password: 'cityslicka',
-              }}
-              onSubmit={this.handleSubmit}
-              enableReinitialize={true}
-              validationSchema={validation.login}
-              render={formikBag => <LoginForm {...formikBag} />}
-            />
-          </Styled.Wrapper>
-        </Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    );
-  }
-}
+  return (
+    <Layout style={{ height: '100%' }}>
+      <Header>Header</Header>
+      <Content>
+        <Styled.Wrapper>
+          <h1> {CONSTANTS.TITLE} </h1>
+          <Link to="/dashboard">{CONSTANTS.TITLE}</Link>
+          <Formik
+            initialValues={{
+              username: 'eve.holt@reqres.in',
+              password: 'cityslicka',
+            }}
+            onSubmit={handleSubmit}
+            enableReinitialize={true}
+            validationSchema={validation.login}
+            render={formikBag => <LoginForm {...formikBag} />}
+          />
+        </Styled.Wrapper>
+      </Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  );
+};
 
 Login.propTypes = {
   userLogin: PropTypes.func.isRequired,

@@ -31,7 +31,6 @@ const formItemLayout = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mockData = [];
 // eslint-disable-next-line no-plusplus
 for (let i = 0; i < 20; i++) {
@@ -43,7 +42,6 @@ for (let i = 0; i < 20; i++) {
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SampleForm = () => {
   return (
     <Form {...formItemLayout}>

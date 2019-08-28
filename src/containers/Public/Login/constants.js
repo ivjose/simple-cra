@@ -1,5 +1,5 @@
 const CONSTANTS = {
-  TITLE: 'Login',
+  TITLE: 'Login V2',
 };
 
 export default CONSTANTS;

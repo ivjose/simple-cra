@@ -2,6 +2,7 @@ module.exports = {
   parser: 'babel-eslint',
   extends: [
     'airbnb',
+    'airbnb/hooks',
     'plugin:prettier/recommended',
     'prettier/react',
     'plugin:react/recommended',
@@ -26,7 +27,11 @@ module.exports = {
   rules: {
     'jsx-a11y/href-no-hash': ['off'],
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
-    'react/jsx-boolean-value': 'never',
+    'react/jsx-boolean-value': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'import/prefer-default-export': 0,
     'max-len': [
       'warn',
       {

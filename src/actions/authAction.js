@@ -1,4 +1,4 @@
-import request from 'utils/api';
+import AuthService from 'api/AuthService';
 import CONSTANTS from 'utils/constants';
 import { localStorage } from 'utils/helpers/localStorage';
 
@@ -10,14 +10,7 @@ export const actionLogin = (email, password) => async dispatch => {
   dispatch({ type: LOGIN });
 
   try {
-    const response = await request({
-      url: '/login',
-      method: 'POST',
-      data: {
-        email,
-        password,
-      },
-    });
+    const response = await AuthService.signIn({ email, password });
 
     console.log(response, 'datasdsd');
     localStorage.save('token', response.token);
