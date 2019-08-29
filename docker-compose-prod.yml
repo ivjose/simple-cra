@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  prod-build:
+    container_name: prod-build
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_DOMAIN=/api
+        - REACT_APP_PATH=api/v1/admin
+    restart: always
+    ports:
+      - 8089:80
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
