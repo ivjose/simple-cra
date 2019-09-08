@@ -15,6 +15,7 @@ const defaultState = {
   loader: false,
   token: '',
 };
+
 const initialState = isLogin
   ? { ...defaultState, loggedIn: true, token: localStorage.get('token') }
   : { ...defaultState, loggedIn: false };

@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import { actionLogout } from 'actions/authAction';
+import TreeComponent from './TreeComponent';
 
-class Dashboard extends Component {
-  state = {
-    title: 'Dashboard page',
-  };
-
-  showConfirmModal = () => {
-    const { userLogout } = this.props;
+const Dashboard = ({ userLogout }) => {
+  const showConfirmModal = () => {
     Modal.confirm({
       title: 'Do you want to Logout?',
       onOk() {
@@ -20,22 +16,22 @@ class Dashboard extends Component {
       onCancel() {},
     });
   };
-
-  render() {
-    const { title } = this.state;
-
-    return (
-      <div>
-        {title}
-        <button type="button" onClick={this.showConfirmModal}>
-          Logout
-        </button>
-        <Link to="/login">Login</Link>
-        <Link to="/crud">Login</Link>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      Dashboard
+      <br />
+      <button type="button" onClick={showConfirmModal}>
+        Logout
+      </button>
+      <br />
+      <Link to="/login">Login</Link>
+      <br />
+      <Link to="/crud">Crud</Link>
+      <br />
+      <TreeComponent />
+    </div>
+  );
+};
 
 Dashboard.propTypes = {
   userLogout: PropTypes.func.isRequired,

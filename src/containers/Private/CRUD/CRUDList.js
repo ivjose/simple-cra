@@ -23,7 +23,7 @@ const CRUDList = () => {
   return (
     <div>
       <h1>CRUDList</h1>
-      <Link to="/settings/crud/add">Create</Link>
+      <Link to="/crud/add">Create</Link>
       {list.length !== 0 && <CustomList list={list} />}
     </div>
   );
