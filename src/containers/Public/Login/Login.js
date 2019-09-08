@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,10 +8,7 @@ import { actionLogin } from 'actions/authAction';
 
 import LoginForm from './components/LoginForm';
 import validation from './validation';
-import Styled from './styled';
 import CONSTANTS from './constants';
-
-const { Header, Footer, Content } = Layout;
 
 const Login = ({ userLogin }) => {
   const handleSubmit = async (values, actions) => {
@@ -26,26 +22,20 @@ const Login = ({ userLogin }) => {
   };
 
   return (
-    <Layout style={{ height: '100%' }}>
-      <Header>Header</Header>
-      <Content>
-        <Styled.Wrapper>
-          <h1> {CONSTANTS.TITLE} </h1>
-          <Link to="/dashboard">{CONSTANTS.TITLE}</Link>
-          <Formik
-            initialValues={{
-              username: 'eve.holt@reqres.in',
-              password: 'cityslicka',
-            }}
-            onSubmit={handleSubmit}
-            enableReinitialize={true}
-            validationSchema={validation.login}
-            render={formikBag => <LoginForm {...formikBag} />}
-          />
-        </Styled.Wrapper>
-      </Content>
-      <Footer>Footer</Footer>
-    </Layout>
+    <>
+      <h1> {CONSTANTS.TITLE} </h1>
+      <Link to="/dashboard">{CONSTANTS.TITLE}</Link>
+      <Formik
+        initialValues={{
+          username: 'eve.holt@reqres.in',
+          password: 'cityslicka',
+        }}
+        onSubmit={handleSubmit}
+        enableReinitialize={true}
+        validationSchema={validation.login}
+        render={formikBag => <LoginForm {...formikBag} />}
+      />
+    </>
   );
 };
 

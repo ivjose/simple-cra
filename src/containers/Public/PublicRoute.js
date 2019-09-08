@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import { Login } from 'components/Layout';
 import Loader from 'components/Loader';
 
 const PublicRoute = ({ component: Component, location, loggedIn, ...rest }) => {
@@ -15,11 +15,11 @@ const PublicRoute = ({ component: Component, location, loggedIn, ...rest }) => {
         return loggedIn ? (
           <Redirect to={from} />
         ) : (
-          <>
+          <Login>
             <React.Suspense fallback={<Loader />}>
               <Component {...routeProps} />
             </React.Suspense>
-          </>
+          </Login>
         );
       }}
     />
